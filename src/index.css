@@ -1,0 +1,28 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* évite les marges invisibles */
+* {
+  box-sizing: border-box;
+}
+
+/* images propres */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* boutons propres (optionnel mais recommandé) */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
