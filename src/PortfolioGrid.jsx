@@ -6,10 +6,27 @@ export default function PortfolioGrid() {
   const [selected, setSelected] = useState(null);
   const [index, setIndex] = useState(0);
 
+  const categoryColors = {
+  PRINT: "#DDE8D5",
+  EDITION: "#D9EEFF",
+  VOLUME: "#FFF4C9",
+  INFO: "#FFDCE8"
+};
+
+const categoryAccent = {
+  PRINT: "#5D7A54",
+  EDITION: "#4A79A8",
+  VOLUME: "#A78528",
+  INFO: "#A25A74"
+};
+
+const currentAccent = categoryAccent[active];
+
 const [loadedImages, setLoadedImages] = useState({});
 
 const [visibleProjects, setVisibleProjects] = useState(4);
 
+const currentBg = categoryColors[active] || "#111";
   const filtered = projects.filter(p => p.category === active);
   const isInfo = active === "INFO";
 
@@ -180,8 +197,8 @@ const [visibleProjects, setVisibleProjects] = useState(4);
         display: "flex",
         minHeight: "100vh",
         width: "100%",
-        background: "#111",
-        color: "#fff"
+      background: currentBg,
+color: "#111",
       }}
     >
 
@@ -194,7 +211,15 @@ const [visibleProjects, setVisibleProjects] = useState(4);
           boxSizing: "border-box"
         }}
       >
-        <h2 style={{ marginBottom: "30px" }}>Paul Creus</h2>
+        <h2
+  style={{
+    marginBottom: "30px",
+    color: currentAccent,
+    transition: "color 0.5s ease"
+  }}
+>
+  Paul Creus
+</h2>
 
         <div
           style={{
@@ -216,7 +241,7 @@ const [visibleProjects, setVisibleProjects] = useState(4);
                     ? "rgba(255,255,255,0.06)"
                     : "transparent",
                   border: "none",
-                  color: "#fff",
+                  color: isActive ? currentAccent : "#333",
                   fontSize: "14px",
                   cursor: "pointer",
                   padding: "8px 10px",
@@ -224,8 +249,8 @@ const [visibleProjects, setVisibleProjects] = useState(4);
                   opacity: isActive ? 1 : 0.35,
                   fontWeight: isActive ? "500" : "300",
                   borderLeft: isActive
-                    ? "2px solid #fff"
-                    : "2px solid transparent",
+  ? `2px solid ${currentAccent}`
+  : "2px solid transparent",
                   transition: "all 0.25s ease"
                 }}
               >
@@ -244,14 +269,16 @@ const [visibleProjects, setVisibleProjects] = useState(4);
           maxWidth: "900px"
         }}
       >
-        <h2
-          style={{
-            marginBottom: "40px",
-            fontWeight: "400"
-          }}
-        >
-          Information
-        </h2>
+<h2
+  style={{
+    marginBottom: "40px",
+    fontWeight: "400",
+    color: currentAccent,
+    transition: "color 0.5s ease"
+  }}
+>
+  Informations
+</h2>
 
         {/* PRESENTATION */}
         <div style={{ marginBottom: "60px" }}>
@@ -297,17 +324,18 @@ avec les habitants et artistes locaux.
   // ======================
   // HOME PAGE
   // ======================
-  return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        width: "100%",
-        background: "#111",
-        color: "#fff",
-        overflowX: "hidden"
-      }}
-    >
+return (
+  <div
+    style={{
+      display: "flex",
+      minHeight: "100vh",
+      width: "100%",
+      background: currentBg,
+     color: active === "INFO" ? "#111" : "#1a1a1a",
+      overflowX: "hidden",
+      transition: "background-color 0.5s ease"
+    }}
+  >
       {/* MENU */}
       <div
         style={{
@@ -317,7 +345,15 @@ avec les habitants et artistes locaux.
           boxSizing: "border-box"
         }}
       >
-        <h2 style={{ marginBottom: "30px" }}>Paul Creus</h2>
+        <h2
+  style={{
+    marginBottom: "30px",
+    color: categoryAccent[active] || "#111",
+    transition: "color 0.5s ease"
+  }}
+>
+  Paul Creus
+</h2>
 
         <div
           style={{
@@ -334,20 +370,33 @@ avec les habitants et artistes locaux.
       key={item}
       onClick={() => setActive(item)}
       style={{
-        textAlign: "left",
-        background: isActive ? "rgba(255,255,255,0.06)" : "transparent",
-        border: "none",
-        color: "#fff",
-        fontSize: "14px",
-        cursor: "pointer",
-        padding: "8px 10px",
-        width: "100%",
-        opacity: isActive ? 1 : 0.35,
-        fontWeight: isActive ? "500" : "300",
-        letterSpacing: isActive ? "0.8px" : "0.3px",
-        borderLeft: isActive ? "2px solid #fff" : "2px solid transparent",
-        transition: "all 0.25s ease"
-      }}
+  textAlign: "left",
+  background: isActive
+    ? `${categoryAccent[item]}15`
+    : "transparent",
+
+  border: "none",
+
+  color: isActive
+    ? categoryAccent[item]
+    : "#444",
+
+  fontSize: "14px",
+  cursor: "pointer",
+  padding: "8px 10px",
+  width: "100%",
+
+  opacity: isActive ? 1 : 0.4,
+  fontWeight: isActive ? "500" : "300",
+
+  letterSpacing: isActive ? "0.8px" : "0.3px",
+
+  borderLeft: isActive
+    ? `2px solid ${categoryAccent[item]}`
+    : "2px solid transparent",
+
+  transition: "all 0.25s ease"
+}}
     >
       {item}
     </button>
