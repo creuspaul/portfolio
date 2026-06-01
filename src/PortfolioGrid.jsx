@@ -6,58 +6,69 @@ export default function PortfolioGrid() {
   const [selected, setSelected] = useState(null);
   const [index, setIndex] = useState(0);
 
+  const [loadedImages, setLoadedImages] = useState({});
+  const [visibleProjects, setVisibleProjects] = useState(4);
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const categoryColors = {
-  PRINT: "#DDE8D5",
-  EDITION: "#D9EEFF",
-  VOLUME: "#FFF4C9",
-  INFO: "#FFDCE8"
-};
+    PRINT: "#DDE8D5",
+    EDITION: "#D9EEFF",
+    VOLUME: "#FFF4C9",
+    INFO: "#FFDCE8"
+  };
 
-const categoryAccent = {
-  PRINT: "#5D7A54",
-  EDITION: "#4A79A8",
-  VOLUME: "#A78528",
-  INFO: "#A25A74"
-};
+  const categoryAccent = {
+    PRINT: "#5D7A54",
+    EDITION: "#4A79A8",
+    VOLUME: "#A78528",
+    INFO: "#A25A74"
+  };
 
-const currentAccent = categoryAccent[active];
+  const currentBg = categoryColors[active] || "#111";
+  const currentAccent = categoryAccent[active];
 
-const [loadedImages, setLoadedImages] = useState({});
-
-const [visibleProjects, setVisibleProjects] = useState(4);
-
-const currentBg = categoryColors[active] || "#111";
-  const filtered = projects.filter(p => p.category === active);
+  const filtered = projects.filter((p) => p.category === active);
   const isInfo = active === "INFO";
 
+  // ======================
+  // MOBILE DETECTION
+  // ======================
   useEffect(() => {
-  setVisibleProjects(4);
-
-  const interval = setInterval(() => {
-    setVisibleProjects(prev => {
-      if (prev >= filtered.length) {
-        clearInterval(interval);
-        return prev;
-      }
-
-      return prev + 2;
-    });
-  }, 250);
-
-  return () => clearInterval(interval);
-}, [active]);
-
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < 768;
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   // ======================
-  // PAGE PROJET
+  // GRID ANIMATION
+  // ======================
+  useEffect(() => {
+    setVisibleProjects(4);
+
+    const interval = setInterval(() => {
+      setVisibleProjects((prev) => {
+        if (prev >= filtered.length) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 2;
+      });
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, [active]);
+
+  // ======================
+  // PROJECT PAGE
   // ======================
   if (selected) {
     const gallery = Array.from(
-  { length: selected.images },
-  (_, i) => `/images/${selected.folder}/${i + 1}.jpg`
-);
+      { length: selected.images },
+      (_, i) => `/images/${selected.folder}/${i + 1}.jpg`
+    );
 
     return (
       <div
@@ -66,385 +77,130 @@ const currentBg = categoryColors[active] || "#111";
           width: "100%",
           background: "#111",
           color: "#fff",
-          overflowX: "hidden",
-          display: "block"
+          overflowX: "hidden"
         }}
       >
-        {/* TEXTE */}
+        {/* HEADER */}
         <div
           style={{
             width: "100%",
             maxWidth: "900px",
-            padding: "40px",
+            padding: isMobile ? "20px" : "40px",
             boxSizing: "border-box"
           }}
         >
-          <button
-            onClick={() => setSelected(null)}
-            style={{ marginBottom: "20px" }}
-          >
-            ← Back
-          </button>
+          <button onClick={() => setSelected(null)}>← Back</button>
 
           <h2>{selected.title}</h2>
 
-          <p style={{ marginTop: "20px", opacity: 0.7 }}>
-            {selected.description}
-          </p>
+          <p style={{ opacity: 0.7 }}>{selected.description}</p>
         </div>
 
-        {/* CAROUSEL */}
+        {/* IMAGE */}
         <div
-  style={{
-    width: "100%",
-    height: "88vh",
-    position: "relative",
-    backgroundColor: "#111",
-    padding: "0 40px",
-    boxSizing: "border-box"
-  }}
->
-  <img
-    src={gallery[index]}
-    loading="lazy"
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "contain",
-      display: "block",
-      backgroundColor: "#111"
-    }}
-  />
+          style={{
+            width: "100%",
+            height: "80vh",
+            position: "relative",
+            padding: isMobile ? "0 10px" : "0 40px"
+          }}
+        >
+          <img
+            src={gallery[index]}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain"
+            }}
+          />
 
-          {/* PREV */}
           <button
             onClick={() =>
               setIndex((index - 1 + gallery.length) % gallery.length)
             }
-            style={{
-              position: "absolute",
-              left: 20,
-              top: "50%",
-              transform: "translateY(-50%)",
-              fontSize: "20px",
-              background: "transparent",
-              color: "#fff",
-              border: "none",
-              cursor: "pointer"
-            }}
+            style={navBtnLeft}
           >
             ‹
           </button>
 
-          {/* NEXT */}
           <button
-            onClick={() =>
-              setIndex((index + 1) % gallery.length)
-            }
-            style={{
-              position: "absolute",
-              right: 20,
-              top: "50%",
-              transform: "translateY(-50%)",
-              fontSize: "20px",
-              background: "transparent",
-              color: "#fff",
-              border: "none",
-              cursor: "pointer"
-            }}
+            onClick={() => setIndex((index + 1) % gallery.length)}
+            style={navBtnRight}
           >
             ›
           </button>
         </div>
-        {/* FOOTER */}
-<div
-  style={{
-    width: "100%",
-    padding: "20px 40px",
-    boxSizing: "border-box",
-    marginTop: "20px"
-  }}
->
-  {/* LINE */}
-  <div
-    style={{
-      height: "1px",
-      width: "100%",
-      backgroundColor: "rgba(255,255,255,0.2)",
-      marginBottom: "15px"
-    }}
-  />
-
-  {/* TEXT */}
-  <div
-    style={{
-      fontSize: "12px",
-      opacity: 0.7,
-      letterSpacing: "0.5px"
-    }}
-  >
-    creuspaul@gmail.com - @paul.creus
-  </div>
-</div>
       </div>
     );
   }
 
+  // ======================
+  // INFO PAGE
+  // ======================
   if (isInfo) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        width: "100%",
-      background: currentBg,
-color: "#111",
-      }}
-    >
+    return (
+      <div style={wrapperStyle(currentBg, currentAccent)}>
+        <Menu
+          isMobile={isMobile}
+          active={active}
+          setActive={setActive}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+          currentAccent={currentAccent}
+          currentBg={currentBg}
+        />
 
-      {/* MENU */}
-      <div
-        style={{
-          width: "220px",
-          flexShrink: 0,
-          padding: "30px",
-          boxSizing: "border-box"
-        }}
-      >
-        <h2
-  style={{
-    marginBottom: "30px",
-    color: currentAccent,
-    transition: "color 0.5s ease"
-  }}
->
-  Paul Creus
-</h2>
+        <div style={contentStyle(isMobile)}>
+          <h2 style={{ color: currentAccent }}>Informations</h2>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px"
-          }}
-        >
-          {["PRINT", "EDITION", "VOLUME", "INFO"].map((item) => {
-            const isActive = active === item;
-
-            return (
-              <button
-                key={item}
-                onClick={() => setActive(item)}
-                style={{
-                  textAlign: "left",
-                  background: isActive
-                    ? "rgba(255,255,255,0.06)"
-                    : "transparent",
-                  border: "none",
-                  color: isActive ? currentAccent : "#333",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                  padding: "8px 10px",
-                  width: "100%",
-                  opacity: isActive ? 1 : 0.35,
-                  fontWeight: isActive ? "500" : "300",
-                  borderLeft: isActive
-  ? `2px solid ${currentAccent}`
-  : "2px solid transparent",
-                  transition: "all 0.25s ease"
-                }}
-              >
-                {item}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* INFO CONTENT */}
-      <div
-        style={{
-          flex: 1,
-          padding: "60px",
-          maxWidth: "900px"
-        }}
-      >
-<h2
-  style={{
-    marginBottom: "40px",
-    fontWeight: "400",
-    color: currentAccent,
-    transition: "color 0.5s ease"
-  }}
->
-  Informations
-</h2>
-
-        {/* PRESENTATION */}
-        <div style={{ marginBottom: "60px" }}>
-          <p
-            style={{
-              lineHeight: "1.8",
-              fontSize: "15px",
-              opacity: 0.8,
-              maxWidth: "700px"
-            }}
-          >
-            Diplômé en 2016 des Arts Décoratifs de Strasbourg, Paul Creus est un artiste visuel dont la 
-pratique mêle image imprimée, création numérique et mise en volume. Installé à Nantes de
-puis 2019, il y mène un travail d’exploration plastique figuratif s’intéressant à différents états 
-de la matière et du tangible, depuis le fantomatique jusqu’au palpable. En jouant des biais et 
-des failles des systèmes de représentation augmentés par la technologie, son travail ouvre 
-sur des espaces parallèles étranges et oniriques. 
-Il s’implique également dans le milieu culturel associatif, notamment à travers l’atelier 
-Projéta qu’il contribue à fonder, proposant expositions, ateliers et spectacle vivant en lien 
-avec les habitants et artistes locaux. 
+          <p style={{ lineHeight: 1.8, opacity: 0.8 }}>
+            Diplômé en 2016 des Arts Décoratifs de Strasbourg, Paul Creus est un
+            artiste visuel dont la pratique mêle image imprimée, création numérique...
           </p>
-        </div>
 
-        {/* CONTACT */}
-        <div>
-          <p
-            style={{
-              fontSize: "14px",
-              opacity: 0.7,
-              lineHeight: "1.8"
-            }}
-          >
-            creuspaul@gmail.com
-            <br />
+          <div style={{ marginTop: 40, fontSize: 14, opacity: 0.7 }}>
+            creuspaul@gmail.com <br />
             @paul.creus
-          </p>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
   // ======================
   // HOME PAGE
   // ======================
-return (
-  <div
-    style={{
-      display: "flex",
-      minHeight: "100vh",
-      width: "100%",
-      background: currentBg,
-     color: active === "INFO" ? "#111" : "#1a1a1a",
-      overflowX: "hidden",
-      transition: "background-color 0.5s ease"
-    }}
-  >
-      {/* MENU */}
-      <div
-        style={{
-          width: "220px",
-          flexShrink: 0,
-          padding: "30px",
-          boxSizing: "border-box"
-        }}
-      >
-        <h2
-  style={{
-    marginBottom: "30px",
-    color: categoryAccent[active] || "#111",
-    transition: "color 0.5s ease"
-  }}
->
-  Paul Creus
-</h2>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px"
-          }}
-        >
-          {["PRINT", "EDITION", "VOLUME", "INFO"].map((item) => {
-  const isActive = active === item;
-
   return (
-    <button
-      key={item}
-      onClick={() => setActive(item)}
-      style={{
-  textAlign: "left",
-  background: isActive
-    ? `${categoryAccent[item]}15`
-    : "transparent",
-
-  border: "none",
-
-  color: isActive
-    ? categoryAccent[item]
-    : "#444",
-
-  fontSize: "14px",
-  cursor: "pointer",
-  padding: "8px 10px",
-  width: "100%",
-
-  opacity: isActive ? 1 : 0.4,
-  fontWeight: isActive ? "500" : "300",
-
-  letterSpacing: isActive ? "0.8px" : "0.3px",
-
-  borderLeft: isActive
-    ? `2px solid ${categoryAccent[item]}`
-    : "2px solid transparent",
-
-  transition: "all 0.25s ease"
-}}
-    >
-      {item}
-    </button>
-  );
-})}
-        </div>
-      </div>
+    <div style={wrapperStyle(currentBg, currentAccent)}>
+      <Menu
+        isMobile={isMobile}
+        active={active}
+        setActive={setActive}
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        currentAccent={currentAccent}
+        currentBg={currentBg}
+      />
 
       {/* GRID */}
-      <div
-        style={{
-          flex: 1,
-          minWidth: 0,
-          padding: "40px",
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "10px",
-          alignContent: "flex-start"
-        }}
-      >
-        {filtered.slice(0, visibleProjects).map(p => {
+      <div style={gridStyle(isMobile)}>
+        {filtered.slice(0, visibleProjects).map((p) => {
           const isLandscape = p.orientation === "landscape";
 
           return (
             <div
               key={p.id}
               style={{
-                flexShrink: 0,
-                flexBasis: isLandscape ? "440px" : "260px",
-                maxWidth: "100%"
+                flexBasis: isMobile
+                  ? "100%"
+                  : isLandscape
+                  ? "440px"
+                  : "260px"
               }}
             >
-              <div
-  style={{
-    position: "relative",
-    overflow: "hidden"
-  }}
->
-<div
-  style={{
-    position: "relative",
-    overflow: "hidden",
-    width: "100%",
-    height: "320px",
-    background: "#1a1a1a"
-  }}
->
-  {/* TINY IMAGE */}
+              <div style={{ position: "relative", height: 320, overflow: "hidden" }}>
+
+  {/* 1. TINY (blur background) */}
   <img
     src={`/images/${p.folder}/tiny.jpg`}
     style={{
@@ -460,23 +216,20 @@ return (
     }}
   />
 
-  {/* HD THUMB */}
+  {/* 2. THUMB / HD */}
   <img
     src={`/images/${p.folder}/thumb.jpg`}
     loading="lazy"
-
     onLoad={() =>
-      setLoadedImages(prev => ({
+      setLoadedImages((prev) => ({
         ...prev,
         [p.id]: true
       }))
     }
-
     onClick={() => {
       setSelected(p);
       setIndex(0);
     }}
-
     style={{
       position: "relative",
       width: "100%",
@@ -486,33 +239,25 @@ return (
       cursor: "pointer",
 
       opacity: loadedImages[p.id] ? 1 : 0,
-
-      transition:
-        "opacity 0.7s ease, transform 0.35s ease",
-
+      transition: "opacity 0.7s ease, transform 0.35s ease",
       transform: "scale(1)"
     }}
 
     onMouseEnter={(e) => {
-      e.currentTarget.style.transform = "scale(1.015)";
+      if (!isMobile) {
+        e.currentTarget.style.transform = "scale(1.015)";
+      }
     }}
 
     onMouseLeave={(e) => {
-      e.currentTarget.style.transform = "scale(1)";
+      if (!isMobile) {
+        e.currentTarget.style.transform = "scale(1)";
+      }
     }}
   />
 </div>
-</div>
 
-              <p
-                style={{
-                  marginTop: "8px",
-                  fontSize: "12px",
-                  opacity: 0.65
-                }}
-              >
-                {p.title}
-              </p>
+              <p style={{ fontSize: 12, opacity: 0.6 }}>{p.title}</p>
             </div>
           );
         })}
@@ -520,3 +265,197 @@ return (
     </div>
   );
 }
+
+// ======================
+// MENU COMPONENT
+// ======================
+function Menu({
+  isMobile,
+  active,
+  setActive,
+  menuOpen,
+  setMenuOpen,
+  currentAccent,
+  currentBg
+}) {
+  return (
+    <>
+      {/* HAMBURGER */}
+      {isMobile && (
+        <button style={hamburgerStyle(currentAccent)} onClick={() => setMenuOpen(true)}>
+          ☰
+        </button>
+      )}
+
+      {/* DESKTOP MENU */}
+      {!isMobile && (
+        <div style={menuStyle}>
+          <h2 style={{ color: currentAccent, marginBottom: 30 }}>Paul Creus</h2>
+
+          {["PRINT", "EDITION", "VOLUME", "INFO"].map((item) => {
+            const isActive = active === item;
+
+            return (
+              <button
+                key={item}
+                onClick={() => setActive(item)}
+                style={{
+  width: "100%",
+  textAlign: "left",
+
+  padding: "16px 0",
+
+  fontSize: "20px",
+  letterSpacing: isActive ? "0.8px" : "0.3px",
+  lineHeight: 1.2,
+  background: "transparent",
+  border: "none",
+  color: isActive ? currentAccent : "#333",
+  fontWeight: isActive ? "500" : "300",
+  letterSpacing: isActive ? "0.8px" : "0.4px",
+  opacity: isActive ? 1 : 0.6,
+  cursor: "pointer",
+  borderBottom: "none",
+  transition: "all 0.25s ease"
+  
+}}
+              >
+                {item}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* MOBILE MENU */}
+      {isMobile && menuOpen && (
+        <div
+          style={overlayStyle(currentBg)}
+          onClick={() => setMenuOpen(false)}
+        >
+          <div onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setMenuOpen(false)}
+              style={{ fontSize: 22, marginBottom: 40, color: currentAccent }}
+              
+            >
+              ✕
+            </button>
+
+            {["PRINT", "EDITION", "VOLUME", "INFO"].map((item) => {
+              const isActive = active === item;
+
+              return (
+                <button
+                  key={item}
+                  onClick={() => {
+                    setActive(item);
+                    setMenuOpen(false);
+                  }}
+                  style={mobileItemStyle(isActive, currentAccent)}
+                >
+                  {item}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+// ======================
+// STYLES
+// ======================
+const wrapperStyle = (bg, color) => ({
+  display: "flex",
+  minHeight: "100vh",
+  background: bg,
+  color: color,
+  overflowX: "hidden"
+});
+
+const menuStyle = {
+  width: 220,
+  padding: 30,
+  boxSizing: "border-box"
+};
+
+const gridStyle = (isMobile) => ({
+  flex: 1,
+  padding: isMobile ? 15 : 40,
+  display: "flex",
+  flexWrap: "wrap",
+  gap: 10
+});
+
+const contentStyle = (isMobile) => ({
+  flex: 1,
+  padding: isMobile ? 20 : 60,
+  maxWidth: 900
+});
+
+const hamburgerStyle = (color) => ({
+  position: "fixed",
+  top: 15,
+  right: 15,
+  fontSize: 26,
+  background: "transparent",
+  border: "none",
+  color: color,
+  zIndex: 2000,
+  cursor: "pointer"
+});
+
+const overlayStyle = (bg) => ({
+  position: "fixed",
+  inset: 0,
+  background: bg,
+  zIndex: 1500,
+  padding: 30
+});
+
+const menuItemStyle = (active, color, item) => ({
+  width: "100%",
+  textAlign: "left",
+  background: active ? `${color}20` : "transparent",
+  border: "none",
+  color: active ? color : "#444",
+  padding: "8px 10px",
+  opacity: active ? 1 : 0.4,
+  borderLeft: active ? `2px solid ${color}` : "2px solid transparent",
+  cursor: "pointer"
+});
+
+const mobileItemStyle = (active, color) => ({
+  fontSize: 20,
+  padding: "12px 0",
+  background: "transparent",
+  border: "none",
+  color: active ? color : "#333",
+  fontWeight: active ? "500" : "300",
+  cursor: "pointer"
+});
+
+const navBtnLeft = {
+  position: "absolute",
+  left: 20,
+  top: "50%",
+  transform: "translateY(-50%)",
+  fontSize: 22,
+  background: "transparent",
+  border: "none",
+  color: "#fff"
+};
+
+const navBtnRight = {
+  position: "absolute",
+  right: 20,
+  top: "50%",
+  transform: "translateY(-50%)",
+  fontSize: 22,
+  background: "transparent",
+  border: "none",
+  color: "#fff"
+};
