@@ -431,12 +431,18 @@ const menuItemStyle = (active, color, item) => ({
 });
 
 const mobileItemStyle = (active, color) => ({
+  display: "block",
+  width: "100%",
   fontSize: 20,
-  padding: "12px 0",
+  padding: "16px 0",
+  marginBottom: "8px",
   background: "transparent",
   border: "none",
   color: active ? color : "#333",
   fontWeight: active ? "500" : "300",
+  letterSpacing: active ? "0.8px" : "0.4px",
+  lineHeight: 1.2,
+  textAlign: "left",
   cursor: "pointer"
 });
 
