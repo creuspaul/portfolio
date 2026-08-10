@@ -154,14 +154,16 @@ export default function PortfolioGrid() {
           <h2 style={{ color: currentAccent }}>Informations</h2>
 
           <p style={{ lineHeight: 1.8, opacity: 0.8 }}>
-            Diplômé en 2016 des Arts Décoratifs de Strasbourg, Paul Creus est un
-            artiste visuel dont la pratique mêle image imprimée, création numérique...
+            Diplômé en 2016 des Arts Décoratifs de Strasbourg, Paul Creus est un artiste visuel dont la pratique mêle image imprimée, création numérique et mise en volume. Installé à Nantes de puis 2019, il y mène un travail d’exploration plastique figuratif s’intéressant à différents états de la matière et du tangible, depuis le fantomatique jusqu’au palpable. En jouant des biais et des failles des systèmes de représentation augmentés par la technologie, son travail ouvre sur des espaces parallèles étranges et oniriques.
           </p>
 
           <div style={{ marginTop: 40, fontSize: 14, opacity: 0.7 }}>
             creuspaul@gmail.com <br />
             @paul.creus
           </div>
+
+                    <div style={{ marginTop: 40, fontSize: 14, opacity: 0.7 }}>
+Activité artisanale de soclage d'oeuvre d'art, métallerie et encadrement : Me contacter par mail :)        </div>
         </div>
       </div>
     );
