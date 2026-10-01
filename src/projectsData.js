@@ -88,7 +88,7 @@ const projects = [
   {
     id: "flashweb2",
     category: "PRINT",
-    title: "Unexpected1",
+    title: "Unexpected2",
 
     folder: "print/flashweb2",
 

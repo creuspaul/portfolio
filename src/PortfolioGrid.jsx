@@ -16,7 +16,7 @@ export default function PortfolioGrid() {
     PRINT: "#DDE8D5",
     EDITION: "#D9EEFF",
     VOLUME: "#FFF4C9",
-    INFO: "#FFDCE8"
+    INFO: "rgb(226, 195, 255)"
   };
 
   const categoryAccent = {
@@ -130,6 +130,38 @@ export default function PortfolioGrid() {
             ›
           </button>
         </div>
+                {/* FOOTER */}
+        <footer
+          style={{
+            width: "100%",
+            padding: "20px 40px 30px",
+            boxSizing: "border-box",
+            marginTop: "30px",
+            backgroundColor: "#111",
+            color: "#fff"
+          }}
+        >
+          {/* LIGNE DE SÉPARATION */}
+          <div
+            style={{
+              height: "1px",
+              width: "100%",
+              backgroundColor: "rgba(255,255,255,0.2)",
+              marginBottom: "15px"
+            }}
+          />
+
+          {/* CONTACT */}
+          <div
+            style={{
+              fontSize: "12px",
+              opacity: 0.7,
+              letterSpacing: "0.5px"
+            }}
+          >
+            creuspaul@gmail.com - @paul.creus
+          </div>
+        </footer>
       </div>
     );
   }
