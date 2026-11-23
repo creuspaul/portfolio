@@ -3,8 +3,105 @@ const projects = [
   // =========================================
   // PRINT
   // =========================================
+ 
+ {
+    id: "DJVP5",
+    category: "PRINT",
+    title: "DJVP5",
+
+    folder: "print/DJVP5",
+
+    images: 4,
+
+    orientation: "portrait",
+
+    description:
+      "65x75 cm, Impression encre pigmentée sur papier Iridium Silver 250gr, 2026"
+  },
+
+
+
+ {
+    id: "DJVP3",
+    category: "PRINT",
+    title: "DJVP3",
+
+    folder: "print/DJVP3",
+
+    images: 3,
+
+    orientation: "portrait",
+
+    description:
+      "75 x 95cm, Impression jet d'encre pigmentée sur papier Iridium Silver 250gr, 2026. "
+  },
+
+  {
+    id: "DJVP2",
+    category: "PRINT",
+    title: "DJVP2",
+
+    folder: "print/DJVP2",
+
+    images: 4,
+
+    orientation: "portrait",
+
+    description:
+      "130 x 85 cm, Impression jet d'encre pigmentée sur papier Hannemhule Baryta 315gr, retro éclairage LED, 2026."
+  },
+ 
+ 
+ 
+ 
+  {
+    id: "DJVP7",
+    category: "PRINT",
+    title: "DJVP7",
+
+    folder: "print/DJVP7",
+
+    images: 4,
+
+    orientation: "portrait",
+
+    description:
+      "30x40 cm, Impression encre pigmentée sur papier Hahnemühle baryta 315gr, retroéclairage LED, 2026, Photo 4 par Baptiste Houssemaine "
+  },
 
  
+
+   {
+    id: "DJVP8",
+    category: "PRINT",
+    title: "DJVP8",
+
+    folder: "print/DJVP8",
+
+    images: 4,
+
+    orientation: "portrait",
+
+    description:
+      "30x40 cm, Impression encre pigmentée sur papier Hahnemühle baryta 315gr, retroéclairage LED, 2026, Photo 4 par Baptiste Houssemaine "
+  },
+
+
+ {
+    id: "DJVP6",
+    category: "PRINT",
+    title: "DJVP6",
+
+    folder: "print/DJVP6",
+
+    images: 3,
+
+    orientation: "portrait",
+
+    description:
+      "65x75 cm, Impression encre pigmentée sur papier Iridium Silver 250gr, 2026"
+  },
+
 
   {
     id: "fossile74",
@@ -468,6 +565,21 @@ const projects = [
   // VOLUME
   // =========================================
 
+ {
+    id: "djvp",
+    category: "VOLUME",
+    title: "Double Jumeau Vert Pâle",
+
+    folder: "volume/DJVP",
+
+    images: 7,
+
+    orientation: "landscape",
+
+    description:
+      " 𝐷𝑜𝑢𝑏𝑙𝑒 𝐽𝑢𝑚𝑒𝑎𝑢 𝑉𝑒𝑟𝑡 𝑃â𝑙𝑒 propose une sélection de scènes d’espaces verts du quotidien qui se déploient dans un entrelacs de racines partagées, de feuilles et d’espèces. Librement inspirées des peintures de sous-bois (Sottobosco) du XVIIe siècle hollandais, ces propositions graphiques se situent quelque part entre nature morte et naturalisme. Capturés dans les parcs et jardins municipaux en vidéo à l’aide d’un téléphone au printemps 2026, les différents éléments ont ensuite été transplantés et agencés sous la forme de nuages de points dans un espace virtuel en trois dimensions. Ces doubles numériques, projections fantomatiques de présences familières , étendent leurs reflets au sein d’une infrastructure de métaux critiques - 𝐼𝑙𝑠 𝑝𝑜𝑢𝑠𝑠𝑒𝑛𝑡 𝑑é𝑠𝑜𝑟𝑚𝑎𝑖𝑠 𝑑𝑎𝑛𝑠 𝑢𝑛𝑒 𝑡𝑒𝑟𝑟𝑒 𝑟𝑎𝑟𝑒 𝑒𝑡 𝑓𝑒𝑟𝑡ile. L'exposition a eu lieu du 13 novembre au 13 décembre à la chapelle des Calvairiennes à Mayenne avec le centre d'art Le Kiosque en 2026."
+  },
+ 
   {
     id: "basevie",
     category: "VOLUME",
@@ -510,7 +622,7 @@ const projects = [
     orientation: "landscape",
 
     description:
-      "Installation réalisée dans le cadre de l'exposition Faux Lume au Centre d'Action Européen d'Action Artistique Contemporaine (CEAAC) à Strasbourg en 2013."
+      "Installation réalisée dans le cadre de l'exposition Faux Lume au Centre d'Action Européen d'Action Artistique Contemporaine (CEAAC) à Strasbourg en 2013. "
   },
 
 
