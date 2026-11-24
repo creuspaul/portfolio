@@ -66,7 +66,7 @@ const projects = [
     orientation: "portrait",
 
     description:
-      "30x40 cm, Impression encre pigmentée sur papier Hahnemühle baryta 315gr, retroéclairage LED, 2026, Photo 4 par Baptiste Houssemaine "
+      "45 x 55 x 10 cm, Impression encre pigmentée sur papier Hahnemühle baryta 315gr, retroéclairage LED, 2026. "
   },
 
  
@@ -99,7 +99,7 @@ const projects = [
     orientation: "portrait",
 
     description:
-      "65x75 cm, Impression encre pigmentée sur papier Iridium Silver 250gr, 2026"
+      "65x75 cm, Impression encre pigmentée sur papier Iridium Silver 250gr, 2026. Photos numéro 3 par Baptiste Houssemaine."
   },
 
 
