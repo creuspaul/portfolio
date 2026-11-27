@@ -4,7 +4,7 @@ export const atelierInfo = {
   subtitle: "Soclage & Scénographie",
 
   introduction:
-    "Conception, fabrication et mise en œuvre de dispositifs de présentation pour les œuvres, les objets et les espaces d'exposition.",
+    "Conception, fabrication et mise en œuvre de dispositifs de présentation pour les objets d'art et les espaces d'exposition.",
 
   location: "Nantes · France",
   email: "creuspaul@gmail.com",
@@ -50,39 +50,48 @@ export const homeGallery = [
   {
     image: "/images/atelier/projet-01.jpg",
     alt: "Réalisation de soclage",
+    caption: "Exposition Maternité au Chronographe — Rezé — 2025 ",
   },
   {
     image: "/images/atelier/projet-02.jpg",
     alt: "Dispositif de présentation",
+     caption: "Felicie d'Estienne d'Orve — Lieu Unique — Nantes — 2024 ",
   },
   {
     image: "/images/atelier/projet-03.jpg",
     alt: "Scénographie d'exposition",
+    caption: "Formation soclage morphologique — Projéta — Nantes — 2026 ",
   },
   {
     image: "/images/atelier/projet-04.jpg",
     alt: "Fabrication en atelier",
+    caption: "Exposition Maternité au Chronographe — Rezé — 2025 ",
   },
   {
     image: "/images/atelier/projet-05.jpg",
     alt: "Détail d'une réalisation",
+    caption: "Exposition Maternité au Chronographe — Rezé — 2025 ",
   },
 
     {
     image: "/images/atelier/projet-06.jpg",
-    alt: "Installation d'une œuvre",
+    alt: "",
+    caption: "Espace enfant du Centre Pompidou - Scenographie d'Hortense Gesquière - Avec jeremy Knez",
   },
   {
     image: "/images/atelier/projet-07.jpg",
     alt: "Fabrication d'un support",
+    caption: "Pièce d'Aïda Lorrain — 2025 ",
   },
   {
     image: "/images/atelier/projet-08.jpg",
     alt: "Détail d'un soclage",
+    caption: "Formation soclage morphologique — Projéta — Nantes — 2026 ",
   },
   {
     image: "/images/atelier/projet-09.jpg",
     alt: "Montage d'exposition",
+    caption: "Conception d'un meuble de studio sur mesure - Avec Jeremy Knez ",
   },
   {
     image: "/images/atelier/projet-10.jpg",

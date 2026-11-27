@@ -66,12 +66,18 @@ const nextSlide = () => {
         {/* CARROUSEL À DROITE */}
         <div className="atelier-carousel">
 
-          <img
-            key={activeSlide}
-            src={homeGallery[activeSlide].image}
-            alt={homeGallery[activeSlide].alt}
-            className="atelier-carousel-image"
-          />
+         <img
+  key={activeSlide}
+  src={homeGallery[activeSlide].image}
+  alt={homeGallery[activeSlide].alt}
+  className="atelier-carousel-image"
+/>
+
+{homeGallery[activeSlide].caption && (
+  <p className="carousel-caption">
+    {homeGallery[activeSlide].caption}
+  </p>
+)}
 
           <div className="carousel-controls">
 
@@ -119,9 +125,7 @@ const nextSlide = () => {
               <h3>{service.title}</h3>
               <p>{service.description}</p>
 
-              <a href="#contact" className="text-link">
-                Me contacter ↗
-              </a>
+             
             </article>
           ))}
         </div>
@@ -149,7 +153,7 @@ const nextSlide = () => {
         <h2>Paul Creus</h2>
 
         <p>
-          Travaillant principalement le métal et le bois, je développe des projets de fabrication en soclage morphologique d'objets d'art, scénographie et dispositifs de présentation. 
+          Travaillant principalement l'acier, le laiton et le bois, je développe des projets de fabrication en soclage morphologique d'objets d'art, scénographie et dispositifs de présentation. 
         </p>
 
         <p>

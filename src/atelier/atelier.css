@@ -635,3 +635,11 @@ body {
 .info-block .atelier-link::after {
   content: none;
 }
+
+.carousel-caption {
+  color: #030645;
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 6px;
+  text-align: left;
+}
