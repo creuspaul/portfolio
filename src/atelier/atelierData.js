@@ -50,7 +50,7 @@ export const homeGallery = [
   {
     image: "/images/atelier/projet-01.jpg",
     alt: "Réalisation de soclage",
-    caption: "Exposition Maternité au Chronographe — Rezé — 2025 ",
+    
   },
   {
     image: "/images/atelier/projet-02.jpg",
@@ -86,7 +86,7 @@ export const homeGallery = [
   {
     image: "/images/atelier/projet-08.jpg",
     alt: "Détail d'un soclage",
-    caption: "Formation soclage morphologique — Projéta — Nantes — 2026 ",
+    caption: "Formation soclage morphologique — Atelier Projéta — Nantes — 2026 ",
   },
   {
     image: "/images/atelier/projet-09.jpg",
@@ -96,6 +96,42 @@ export const homeGallery = [
   {
     image: "/images/atelier/projet-10.jpg",
     alt: "Travail de fabrication",
+  },
+
+   {
+    image: "/images/atelier/projet-11.jpg",
+    alt: "Montage d'exposition",
+    caption: " Exposition Maternité au Chronographe — Rezé — 2025",
+  },
+  {
+    image: "/images/atelier/projet-12.jpg",
+    alt: "Travail de fabrication",
+    caption: "Pièce d'Aïda Lorrain — 2025",
+  },
+
+   {
+    image: "/images/atelier/projet-13.jpg",
+    alt: "Travail de fabrication",
+    caption: "Exposition Maternité au Chronographe — Rezé — 2025",
+  },
+
+    {
+    image: "/images/atelier/projet-14.jpg",
+    alt: "Travail de fabrication",
+  caption: "Formation soclage morphologique — Atelier Projéta — Nantes — 2026 ",
+  },
+
+    {
+    image: "/images/atelier/projet-15.jpg",
+    alt: "Travail de fabrication",
+  
+  },
+
+     {
+    image: "/images/atelier/projet-16.jpg",
+    alt: "Travail de fabrication",
+    caption: "Formation soclage morphologique — Atelier Projéta — Nantes — 2026 ",
+  
   },
 
 ];
