@@ -194,8 +194,15 @@ export default function PortfolioGrid() {
             @paul.creus
           </div>
 
-                    <div style={{ marginTop: 40, fontSize: 14, opacity: 0.7 }}>
-Activité artisanale de soclage d'oeuvre d'art, métallerie et encadrement : Me contacter par mail :)        </div>
+                  <div className="info-block">
+  <p>
+    Pour découvrir mon travail de soclage et de scénographie, ainsi que mes
+    activités de formation et d'accompagnement de projets, rendez-vous sur mon{" "}
+    <a href="/atelier" className="atelier-link">
+      site Atelier ↗
+    </a>.
+  </p>
+</div>
         </div>
       </div>
     );

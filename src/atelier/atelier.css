@@ -1,0 +1,637 @@
+
+/* =========================================
+   PAUL CREUS — SOCLAGE & SCÉNOGRAPHIE
+   ========================================= */
+
+:root {
+  --rose: #FFDCC2;
+  --bleu: #030645;
+  --blanc: #FFFFFF;
+  --noir: #111111;
+  --gris: #777777;
+  --marge: 5vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.atelier {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--blanc);
+  color: var(--bleu);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.atelier a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.atelier img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================
+   HEADER / NAVIGATION
+   ========================================= */
+
+.atelier-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 90px;
+  padding: 20px var(--marge);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: var(--blanc);
+  border-bottom: 1px solid rgba(3, 6, 69, 0.15);
+}
+
+.atelier-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.atelier-logo span {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.atelier-nav {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  font-size: 13px;
+}
+
+.atelier-nav a,
+.portfolio-link {
+  transition: opacity 0.2s ease;
+}
+
+.atelier-nav a:hover,
+.portfolio-link:hover {
+  opacity: 0.5;
+}
+
+.portfolio-link {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.training-description a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.training-description a:hover {
+  opacity: 0.5;
+}
+/* =========================================
+   TEXTES COMMUNS
+   ========================================= */
+
+.eyebrow {
+  margin: 0 0 22px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.atelier h1,
+.atelier h2,
+.atelier h3,
+.atelier p {
+  margin-top: 0;
+}
+
+.atelier h1,
+.atelier h2,
+.atelier h3 {
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.atelier h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 25px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+  font-size: 12px;
+  transition: opacity 0.2s ease;
+}
+
+.text-link:hover {
+  opacity: 0.5;
+}
+
+/* =========================================
+   HERO / ACCUEIL
+   ========================================= */
+
+.atelier-hero {
+  min-height: 650px;
+  padding: 65px var(--marge) 100px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 7vw;
+}
+
+.atelier-hero-text {
+  max-width: 550px;
+}
+
+.atelier-hero h1 {
+  margin-bottom: 35px;
+  font-size: clamp(52px, 6.5vw, 94px);
+  line-height: 0.98;
+}
+
+.atelier-intro {
+  max-width: 410px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.atelier-hero-image {
+  width: 100%;
+  height: 570px;
+  background: var(--rose);
+}
+
+.atelier-hero-image img {
+  object-position: center;
+}
+
+/* =========================================
+   ACTIVITÉS
+   ========================================= */
+
+.atelier-section {
+  padding: 100px var(--marge);
+  background: var(--rose);
+}
+
+.section-heading {
+  margin-bottom: 65px;
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.service-item {
+  min-width: 0;
+}
+
+.service-item img {
+  height: 360px;
+  margin-bottom: 25px;
+  background: var(--blanc);
+}
+
+.service-item .eyebrow {
+  margin-bottom: 10px;
+}
+
+.service-item h3 {
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+
+.service-item > p:not(.eyebrow) {
+  max-width: 380px;
+  min-height: 90px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   FORMATION
+   ========================================= */
+
+.atelier-training {
+  padding: 110px var(--marge);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 9vw;
+}
+
+.training-image {
+  height: 520px;
+  background: var(--rose);
+}
+
+.training-text {
+  max-width: 480px;
+}
+
+.training-text h2 {
+  margin-bottom: 30px;
+}
+
+.training-text > p:not(.eyebrow) {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   À PROPOS
+   ========================================= */
+
+.atelier-about {
+  padding: 110px var(--marge);
+  background: var(--bleu);
+  color: var(--blanc);
+}
+
+.atelier-about h2 {
+  margin-bottom: 45px;
+}
+
+.atelier-about > p:not(.eyebrow) {
+  max-width: 720px;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.65;
+}
+
+/* =========================================
+   CONTACT
+   ========================================= */
+
+.atelier-contact {
+  min-height: 350px;
+  padding: 90px var(--marge);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  background: var(--rose);
+}
+
+.atelier-contact h2 {
+  max-width: 600px;
+  margin-bottom: 0;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.contact-details a {
+  border-bottom: 1px solid var(--bleu);
+  padding-bottom: 4px;
+}
+
+.contact-details p {
+  margin: 0;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.atelier-footer {
+  min-height: 80px;
+  padding: 25px var(--marge);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: var(--blanc);
+  font-size: 11px;
+}
+
+.atelier-footer a {
+  transition: opacity 0.2s ease;
+}
+
+.atelier-footer a:hover {
+  opacity: 0.5;
+}
+
+/* =========================================
+   TABLETTES
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+  :root {
+    --marge: 4vw;
+  }
+
+  .atelier-header {
+    gap: 20px;
+  }
+
+  .atelier-nav {
+    gap: 18px;
+  }
+
+  .atelier-hero {
+    gap: 4vw;
+  }
+
+  .atelier-hero-image {
+    height: 450px;
+  }
+
+  .service-item img {
+    height: 280px;
+  }
+
+  .atelier-training {
+    gap: 5vw;
+  }
+
+  .training-image {
+    height: 420px;
+  }
+}
+
+/* =========================================
+   MOBILES
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  :root {
+    --marge: 22px;
+  }
+
+  html {
+    scroll-padding-top: 75px;
+  }
+
+  .atelier-header {
+    min-height: auto;
+    padding: 18px var(--marge);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .atelier-logo {
+    font-size: 17px;
+  }
+
+  .atelier-logo span {
+    font-size: 10px;
+  }
+
+  .atelier-nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 5px 0;
+    font-size: 11px;
+  }
+
+  .portfolio-link {
+    font-size: 10px;
+  }
+
+  .atelier-hero {
+    min-height: auto;
+    padding: 65px var(--marge) 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 45px;
+  }
+
+  .atelier-hero h1 {
+    font-size: clamp(48px, 13vw, 70px);
+    margin-bottom: 28px;
+  }
+
+  .atelier-intro {
+    font-size: 15px;
+  }
+
+  .atelier-hero-image {
+    height: 390px;
+  }
+
+  .atelier-section {
+    padding: 75px var(--marge);
+  }
+
+  .section-heading {
+    margin-bottom: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .service-item img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 20px;
+  }
+
+  .service-item h3 {
+    font-size: 28px;
+  }
+
+  .service-item > p:not(.eyebrow) {
+    min-height: 0;
+  }
+
+  .atelier-training {
+    padding: 75px var(--marge);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+
+  .training-image {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .atelier-about {
+    padding: 75px var(--marge);
+  }
+
+  .atelier-about h2 {
+    margin-bottom: 30px;
+  }
+
+  .atelier-about > p:not(.eyebrow) {
+    font-size: 17px;
+  }
+
+  .atelier-contact {
+    min-height: auto;
+    padding: 75px var(--marge);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 45px;
+  }
+
+  .atelier-contact h2 {
+    font-size: 43px;
+  }
+
+  .contact-details {
+    font-size: 14px;
+  }
+
+  .atelier-footer {
+    padding: 22px var(--marge);
+    font-size: 10px;
+  }
+}
+
+/* =========================================
+   PETITS MOBILES
+   ========================================= */
+
+@media (max-width: 380px) {
+
+  .atelier-nav {
+    font-size: 10px;
+    gap: 10px;
+  }
+
+  .atelier-hero-image {
+    height: 300px;
+  }
+
+  .atelier-contact h2 {
+    font-size: 36px;
+  }
+}
+
+
+/* =========================================
+   CARROUSEL D'ACCUEIL
+   ========================================= */
+
+.atelier-carousel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  height: 570px;
+  position: relative;
+  background: var(--blanc);
+}
+
+.atelier-carousel-image {
+  display: block;
+  width: 100%;
+  height: 525px;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.carousel-controls {
+  display: flex;
+  width: 100%;
+  height: 45px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  color: var(--bleu);
+  font-size: 11px;
+}
+
+.carousel-controls button {
+  display: inline-block;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--bleu);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.carousel-controls button:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 1000px) {
+  .atelier-carousel {
+    height: 450px;
+  }
+
+  .atelier-carousel-image {
+    height: 405px;
+  }
+}
+
+@media (max-width: 700px) {
+  .atelier-carousel {
+    width: 100%;
+    height: 390px;
+  }
+
+  .atelier-carousel-image {
+    height: 345px;
+  }
+}
+.info-block .atelier-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  border-bottom: none;
+  background-image: none;
+}
+
+.info-block .atelier-link::after {
+  content: none;
+}

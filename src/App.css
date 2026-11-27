@@ -182,3 +182,6 @@
     border-right-color: var(--border);
   }
 }
+.info-block .text-link {
+  text-decoration: none;
+}
