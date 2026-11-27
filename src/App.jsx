@@ -1,5 +1,5 @@
 import PortfolioGrid from "./PortfolioGrid";
-import Atelier from "./atelier/Atelier";
+import atelier from "./atelier/atelier";
 
 export default function App() {
   const path = window.location.pathname;
